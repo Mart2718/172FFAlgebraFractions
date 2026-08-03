@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Foundational Fluency: Algebraic Fractions — Math 172</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/contrib/auto-render.min.js"></script>
+<style>
+  * { box-sizing: border-box; }
+  body { font-family: Georgia, serif; margin: 0; background: #f9f9f9; color: #444; line-height: 1.5; }
+  a { color: #1a6b6b; }
+  h1, h2, h3 { font-family: Georgia, serif; }
+  .wrap { max-width: 860px; margin: 0 auto; padding: 0 20px; }
+
+  header.top { background:#1a1a2e; color:#fff; padding:16px 24px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:8px; }
+  header.top p.eyebrow { margin:0; font-size:12px; letter-spacing:1px; opacity:0.7; text-transform:uppercase; }
+  header.top h1 { margin:4px 0 0; font-size:24px; font-weight:normal; }
+  header.top .tag { font-size:12px; opacity:0.6; text-align:right; }
+
+  .objectives { background:#1a6b6b; color:#fff; padding:12px 24px; font-size:14px; }
+  .objectives ul { margin:6px 0 0; padding-left:20px; }
+
+  nav.stagebar { position: sticky; top: 0; z-index: 50; background:#fff; border-bottom:2px solid #1a6b6b;
+    display:flex; overflow-x:auto; }
+  nav.stagebar a { flex: 1 1 auto; text-align:center; padding:12px 10px; font-size:14px; text-decoration:none;
+    color:#1a6b6b; font-weight:bold; white-space:nowrap; border-right:1px solid #e6f4f4; }
+  nav.stagebar a:hover { background:#e6f4f4; }
+
+  section.stage { padding: 28px 0 8px; }
+  section.stage h2 { color:#1a6b6b; font-size:22px; border-bottom:3px solid #e6f4f4; padding-bottom:8px; }
+  .stage-intro { font-size:15px; color:#555; margin-bottom: 18px; }
+
+  .rulebox { background:#e6f4f4; border-left:5px solid #1a6b6b; padding:14px 18px; margin:20px 0; border-radius:0 8px 8px 0; }
+  .rulebox p { margin:4px 0; font-size:15px; }
+  .rulebox .label { font-size:12px; color:#555; font-style:italic; margin-bottom:6px; }
+
+  .warn { background:#fff3e6; border-left:5px solid #e07020; padding:12px 16px; margin:16px 0; border-radius:0 8px 8px 0; font-size:15px; }
+
+  .example-card, .check-card { background:#fff; border:1px solid #ddd; border-radius:8px; padding:20px;
+    margin:20px 0; box-shadow:0 2px 6px rgba(0,0,0,0.06); }
+  .example-card h3, .check-card h3 { color:#1a6b6b; margin-top:0; font-size:18px; }
+  .try-first { font-style: italic; color:#777; font-size:14px; margin: 4px 0 10px; }
+  .prompt { font-size:17px; margin: 10px 0; }
+
+  .step { border-top:1px solid #eee; padding:12px 0; margin-top:8px; font-size:15px; }
+  .step strong.steplabel { color:#1a6b6b; }
+  .final-answer { background:#e6f4f4; border-left:4px solid #1a6b6b; padding:10px 14px; margin-top:12px;
+    border-radius:0 6px 6px 0; font-size:16px; }
+
+  button.reveal-btn { background:#1a6b6b; color:#fff; border:none; padding:9px 20px; border-radius:4px;
+    cursor:pointer; font-size:14px; margin-top:8px; }
+  button.reveal-btn:hover { background:#2a8f8f; }
+  button.reveal-btn.orange { background:#e07020; }
+  button.reveal-btn.orange:hover { background:#c95f14; }
+
+  .checkit-answer { display:none; background:#fff3e6; border-left:4px solid #e07020; padding:12px 16px;
+    margin-top:12px; border-radius:0 6px 6px 0; font-size:15px; }
+
+  .rp-grid { display:grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap:14px; margin: 18px 0; }
+  .rp-item { background:#fff; border:1px solid #ddd; border-radius:8px; padding:14px 16px; font-size:16px; }
+  .rp-item .num { color:#1a6b6b; font-weight:bold; margin-right:6px; }
+
+  .answerkey-grid { display:grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap:10px; margin:16px 0; }
+  .answerkey-item { background:#f5f5f5; border-radius:6px; padding:10px 14px; font-size:15px; }
+  .answerkey-item .num { color:#1a6b6b; font-weight:bold; margin-right:6px; }
+
+  .confidence { background:#f0f8f8; border-top:3px solid #1a6b6b; padding:24px; margin-top:20px; border-radius:8px; }
+  #stars { font-size:30px; cursor:pointer; letter-spacing:6px; }
+  #star-label { font-size:13px; color:#888; margin:6px 0 0; }
+
+  footer.bottom { background:#1a1a2e; color:#aaa; padding:14px 24px; font-size:12px; text-align:center; margin-top:48px; }
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div>
+    <p class="eyebrow">Math 172 — Santa Ana College</p>
+    <h1>Foundational Fluency: Algebraic Fractions</h1>
+  </div>
+  <div class="tag">Foundational Fluency Component</div>
+</header>
+
+<div class="objectives">
+  <strong>By the end of this page you will be able to:</strong>
+  <ul>
+    <li>Simplify algebraic fractions by factoring the numerator and denominator, then canceling common factors</li>
+    <li>Solve equations containing algebraic fractions by clearing denominators ("Fraction Busters")</li>
+    <li>Simplify complex (nested) fractions</li>
+  </ul>
+</div>
+
+<nav class="stagebar">
+  <a href="#stage-examples">1. Worked Examples</a>
+  <a href="#stage-checkit">2. Check-It Exercises</a>
+  <a href="#stage-retrieval">3. Retrieval Practice</a>
+  <a href="#stage-answers">4. Answer Key</a>
+</nav>
+
+<div class="wrap">
+
+<!-- ============================= STAGE 1: WORKED EXAMPLES ============================= -->
+<section class="stage" id="stage-examples">
+  <h2>1. Worked Examples</h2>
+  <p class="stage-intro">These three examples cover the three core moves for this page: simplifying by factoring
+    and canceling, clearing denominators to solve an equation, and simplifying a fraction that contains fractions
+    inside it. Examples 2 and 3 each show two valid solution methods side by side — try each step yourself before
+    revealing it.</p>
+
+  <div class="rulebox">
+    <p class="label">The one habit that makes algebraic fractions manageable</p>
+    <p>You can only cancel <em>factors</em>, never individual terms. \( \dfrac{PK}{QK} = \dfrac{P}{Q} \) is valid
+      because \( K \) is a factor of both the top and bottom — but nothing in \( \dfrac{x+3}{x} \) can be canceled,
+      since \( x \) is only a term of the numerator, not a factor of the whole thing.</p>
+    <p style="margin-top:10px;">Multiplication: \( \dfrac{P}{Q}\cdot\dfrac{R}{S} = \dfrac{PR}{QS} \) &nbsp;&nbsp;
+      Division: \( \dfrac{P}{Q}\div\dfrac{R}{S} = \dfrac{P}{Q}\cdot\dfrac{S}{R} \) &nbsp;&nbsp;
+      Same-denominator addition: \( \dfrac{P}{Q}+\dfrac{R}{Q} = \dfrac{P+R}{Q} \)</p>
+  </div>
+
+  <!-- Example 1 -->
+  <div class="example-card">
+    <h3>Example 1 — Simplify by factoring first</h3>
+    <p class="try-first">Try this yourself before revealing the steps.</p>
+    <p class="prompt">Simplify: \( \dfrac{x^2-16}{x^2+x-12} \)</p>
+    <div id="ex1-steps" style="display:none;">
+      <div class="step"><strong class="steplabel">Step 1:</strong> Factor the numerator — it's a difference of squares.
+        \[ x^2-16 = (x-4)(x+4) \]</div>
+      <div class="step"><strong class="steplabel">Step 2:</strong> Factor the denominator — find two numbers that multiply to \(-12\) and add to \(1\).
+        \[ x^2+x-12 = (x+4)(x-3) \]</div>
+      <div class="step"><strong class="steplabel">Step 3:</strong> Now that both are factored, cancel the common factor \( (x+4) \).
+        \[ \dfrac{(x-4)(x+4)}{(x+4)(x-3)} = \dfrac{x-4}{x-3}, \quad x \neq -4 \]</div>
+      <div class="final-answer"><strong>Answer:</strong> \( \dfrac{x-4}{x-3} \), with \( x \neq -4 \) (and \( x \neq 3 \) so the original denominator isn't zero)</div>
+    </div>
+    <button class="reveal-btn" onclick="revealSteps('ex1')">Show Example Solution</button>
+  </div>
+
+  <!-- Example 2 -->
+  <div class="example-card">
+    <h3>Example 2 — Two valid ways to solve a rational equation</h3>
+    <p class="try-first">Try this yourself before revealing the steps. Both methods below reach the same answer —
+      compare them and decide which one feels more natural to you.</p>
+    <p class="prompt">Solve: \( \dfrac{x}{4} + \dfrac{3}{x} = 2 \)</p>
+    <div id="ex2-steps" style="display:none;">
+
+      <p style="margin:14px 0 4px; font-weight:bold; color:#1a1a2e;">Method 1 — Combine into a single fraction, then clear it</p>
+      <div class="step"><strong class="steplabel">Step 1:</strong> Combine the left side into one fraction using the common denominator \( 4x \).
+        \[ \dfrac{x}{4} + \dfrac{3}{x} = \dfrac{x^2}{4x} + \dfrac{12}{4x} = \dfrac{x^2+12}{4x} \]</div>
+      <div class="step"><strong class="steplabel">Step 2:</strong> Now you have one fraction equal to a number — clear it by multiplying both sides by \( 4x \) (equivalent to cross-multiplying).
+        \[ \dfrac{x^2+12}{4x} = 2 \implies x^2+12 = 8x \]</div>
+      <div class="step"><strong class="steplabel">Step 3:</strong> Move everything to one side and solve like any quadratic.
+        \[ x^2-8x+12=0 \implies (x-6)(x-2)=0 \implies x=6 \text{ or } x=2 \]</div>
+
+      <p style="margin:22px 0 4px; font-weight:bold; color:#1a1a2e; border-top:2px dashed #ccc; padding-top:16px;">Method 2 — Fraction Busters: clear every denominator immediately</p>
+      <div class="step"><strong class="steplabel">Step 1:</strong> Multiply <em>every</em> term on both sides by the common denominator, \( 4x \), all at once — this is what clears the fractions.
+        \[ 4x\cdot\dfrac{x}{4} + 4x\cdot\dfrac{3}{x} = 4x\cdot 2 \]</div>
+      <div class="step"><strong class="steplabel">Step 2:</strong> Simplify each term — the fractions cancel out entirely.
+        \[ x^2 + 12 = 8x \]</div>
+      <div class="step"><strong class="steplabel">Step 3:</strong> Same equation as Method 1 from here — factor and solve.
+        \[ x^2-8x+12=0 \implies (x-6)(x-2)=0 \implies x=6 \text{ or } x=2 \]</div>
+
+      <div class="final-answer"><strong>Answer (either method):</strong> \( x=6 \) or \( x=2 \) — both check out in the original equation, since neither makes a denominator zero</div>
+    </div>
+    <button class="reveal-btn" onclick="revealSteps('ex2')">Show Both Methods</button>
+  </div>
+
+  <!-- Example 3 -->
+  <div class="example-card">
+    <h3>Example 3 — Two valid ways to simplify a complex fraction</h3>
+    <p class="try-first">Try this yourself before revealing the steps. Both methods below reach the same answer —
+      compare them and decide which one feels more natural to you.</p>
+    <p class="prompt">Simplify: \( \dfrac{1+\dfrac{2}{x}}{1-\dfrac{4}{x^2}} \)</p>
+    <div id="ex3-steps" style="display:none;">
+
+      <p style="margin:14px 0 4px; font-weight:bold; color:#1a1a2e;">Method 1 — Combine into single fractions, then divide</p>
+      <div class="step"><strong class="steplabel">Step 1:</strong> Combine the numerator into a single fraction.
+        \[ 1+\dfrac{2}{x} = \dfrac{x+2}{x} \]</div>
+      <div class="step"><strong class="steplabel">Step 2:</strong> Combine the denominator into a single fraction.
+        \[ 1-\dfrac{4}{x^2} = \dfrac{x^2-4}{x^2} \]</div>
+      <div class="step"><strong class="steplabel">Step 3:</strong> Dividing by a fraction means multiplying by its reciprocal — then factor and cancel.
+        \[ \dfrac{x+2}{x} \div \dfrac{x^2-4}{x^2} = \dfrac{x+2}{x}\cdot\dfrac{x^2}{(x-2)(x+2)} = \dfrac{x}{x-2} \]</div>
+
+      <p style="margin:22px 0 4px; font-weight:bold; color:#1a1a2e; border-top:2px dashed #ccc; padding-top:16px;">Method 2 — Fraction Busters: clear all the denominators at once</p>
+      <div class="step"><strong class="steplabel">Step 1:</strong> Find the LCD of every denominator buried inside the expression — here that's \( x \) and \( x^2 \), so the LCD is \( x^2 \).</div>
+      <div class="step"><strong class="steplabel">Step 2:</strong> Multiply the top <em>and</em> bottom of the whole complex fraction by \( x^2 \), then distribute through every term.
+        \[ \dfrac{x^2\left(1+\dfrac{2}{x}\right)}{x^2\left(1-\dfrac{4}{x^2}\right)} = \dfrac{x^2+2x}{x^2-4} \]</div>
+      <div class="step"><strong class="steplabel">Step 3:</strong> No more fractions inside fractions — factor and cancel like any ordinary algebraic fraction.
+        \[ \dfrac{x^2+2x}{x^2-4} = \dfrac{x(x+2)}{(x-2)(x+2)} = \dfrac{x}{x-2} \]</div>
+
+      <div class="final-answer"><strong>Answer (either method):</strong> \( \dfrac{x}{x-2} \), with \( x \neq 0, 2, -2 \)</div>
+    </div>
+    <button class="reveal-btn" onclick="revealSteps('ex3')">Show Both Methods</button>
+  </div>
+
+  <div class="warn">
+    <strong>⚠ Common mistake:</strong> Whenever you clear denominators — Method 2 in either example above — multiply
+    <em>every single term</em> by the LCD, including terms that don't have a visible fraction. In Example 2's
+    Method 2, the "2" on the right side still gets multiplied by \( 4x \); in Example 3's Method 2, the "1" in both
+    the numerator and denominator still gets multiplied by \( x^2 \). Skipping a term is the single most common
+    error with this technique.
+  </div>
+
+  <div class="warn">
+    <strong>💡 Worth noticing:</strong> Both examples above show the same two philosophies — Method 1 combines
+    everything into a single fraction first, then clears that one fraction; Method 2 clears every denominator
+    immediately, before combining anything. This holds whether you're solving an equation (Example 2) or
+    simplifying an expression (Example 3). Method 1 tends to feel more familiar since it mirrors adding fractions
+    from earlier courses; Method 2 is often faster once you're comfortable with it. Neither is "more correct" —
+    use whichever one you can execute reliably under pressure.
+  </div>
+</section>
+
+<!-- ============================= STAGE 2: CHECK-IT EXERCISES ============================= -->
+<section class="stage" id="stage-checkit">
+  <h2>2. Check-It Exercises</h2>
+  <p class="stage-intro">Work each problem on paper first. Then reveal the full solution and compare your steps,
+    not just your final answer.</p>
+
+  <div class="check-card"><h3>Check-It 1</h3>
+    <p class="prompt">Simplify: \( \dfrac{x^2-9}{x^2-x-6} \)</p>
+    <button class="reveal-btn orange" onclick="toggleCheck('c1')">Reveal Solution</button>
+    <div id="c1" class="checkit-answer">
+      \( x^2-9=(x-3)(x+3) \); \( x^2-x-6=(x-3)(x+2) \). Cancel \( (x-3) \): \( \dfrac{x+3}{x+2} \)
+    </div>
+  </div>
+
+  <div class="check-card"><h3>Check-It 2</h3>
+    <p class="prompt">Simplify: \( \dfrac{x^2+5x+6}{x^2-4} \)</p>
+    <button class="reveal-btn orange" onclick="toggleCheck('c2')">Reveal Solution</button>
+    <div id="c2" class="checkit-answer">
+      \( x^2+5x+6=(x+2)(x+3) \); \( x^2-4=(x-2)(x+2) \). Cancel \( (x+2) \): \( \dfrac{x+3}{x-2} \)
+    </div>
+  </div>
+
+  <div class="check-card"><h3>Check-It 3</h3>
+    <p class="prompt">Solve using Fraction Busters: \( \dfrac{x}{3} - \dfrac{2}{x} = \dfrac{1}{3} \)</p>
+    <button class="reveal-btn orange" onclick="toggleCheck('c3')">Reveal Solution</button>
+    <div id="c3" class="checkit-answer">
+      Multiply every term by \( 3x \): \( x^2 - 6 = x \implies x^2-x-6=0 \implies (x-3)(x+2)=0 \implies x=3 \text{ or } x=-2 \)
+    </div>
+  </div>
+
+  <div class="check-card"><h3>Check-It 4</h3>
+    <p class="prompt">Solve using Fraction Busters: \( \dfrac{2}{x} + \dfrac{1}{2} = \dfrac{3}{x} \)</p>
+    <button class="reveal-btn orange" onclick="toggleCheck('c4')">Reveal Solution</button>
+    <div id="c4" class="checkit-answer">
+      Multiply every term by \( 2x \): \( 4 + x = 6 \implies x=2 \)
+    </div>
+  </div>
+
+  <div class="check-card"><h3>Check-It 5</h3>
+    <p class="prompt">Simplify: \( \dfrac{\dfrac{3}{x}+1}{\dfrac{9}{x^2}-1} \)</p>
+    <button class="reveal-btn orange" onclick="toggleCheck('c5')">Reveal Solution</button>
+    <div id="c5" class="checkit-answer">
+      Numerator: \( \dfrac{3+x}{x} \). Denominator: \( \dfrac{9-x^2}{x^2} \). Divide and factor \( 9-x^2=(3-x)(3+x) \):
+      \( \dfrac{3+x}{x}\cdot\dfrac{x^2}{(3-x)(3+x)} = \dfrac{x}{3-x} \)
+    </div>
+  </div>
+
+  <div class="check-card"><h3>Check-It 6</h3>
+    <p class="prompt">Simplify: \( \dfrac{x^3-27}{x^2-9} \)</p>
+    <button class="reveal-btn orange" onclick="toggleCheck('c6')">Reveal Solution</button>
+    <div id="c6" class="checkit-answer">
+      Factor the numerator as a difference of cubes: \( x^3-27=(x-3)(x^2+3x+9) \). Factor the denominator:
+      \( x^2-9=(x-3)(x+3) \). Cancel \( (x-3) \): \( \dfrac{x^2+3x+9}{x+3} \)
+    </div>
+  </div>
+</section>
+
+<!-- ============================= STAGE 3: RETRIEVAL PRACTICE ============================= -->
+<section class="stage" id="stage-retrieval">
+  <h2>3. Retrieval Practice</h2>
+  <p class="stage-intro">No scaffolding this time — these are mixed together and presented without a matching
+    worked example nearby, so you're practicing recall rather than pattern-matching. Work through as many as you
+    can before checking the answer key.</p>
+
+  <div class="rp-grid">
+    <div class="rp-item"><span class="num">1.</span>Simplify: \( \dfrac{x^2-25}{x^2+2x-15} \)</div>
+    <div class="rp-item"><span class="num">2.</span>Simplify: \( \dfrac{x^2-7x+12}{x^2-16} \)</div>
+    <div class="rp-item"><span class="num">3.</span>Solve: \( \dfrac{x}{3} + \dfrac{4}{x} = \dfrac{7}{3} \)</div>
+    <div class="rp-item"><span class="num">4.</span>Solve: \( \dfrac{5}{x} - \dfrac{1}{3} = \dfrac{2}{x} \)</div>
+    <div class="rp-item"><span class="num">5.</span>Simplify: \( \dfrac{1-\dfrac{3}{x}}{1-\dfrac{9}{x^2}} \)</div>
+    <div class="rp-item"><span class="num">6.</span>Simplify: \( \dfrac{x^3+8}{x^2-4} \)</div>
+    <div class="rp-item"><span class="num">7.</span>Simplify: \( \dfrac{\dfrac{2}{x}+5}{\dfrac{4}{x^2}-25} \)</div>
+    <div class="rp-item"><span class="num">8.</span>Simplify: \( \dfrac{x^2-x-6}{x^2-4x+3} \)</div>
+    <div class="rp-item"><span class="num">9.</span>Solve: \( \dfrac{3}{x-1} = \dfrac{2}{x+1} \)</div>
+    <div class="rp-item"><span class="num">10.</span>Simplify: \( \dfrac{\dfrac{x}{2}-1}{\dfrac{x^2}{4}-1} \)</div>
+  </div>
+</section>
+
+<!-- ============================= STAGE 4: ANSWER KEY ============================= -->
+<section class="stage" id="stage-answers">
+  <h2>4. Answer Key — Retrieval Practice</h2>
+  <p class="stage-intro">Check your work against these after attempting all ten. If several don't match, revisit
+    the worked examples and Check-It exercises above rather than just moving on.</p>
+
+  <div class="answerkey-grid">
+    <div class="answerkey-item"><span class="num">1.</span>\( \dfrac{x-5}{x-3} \)</div>
+    <div class="answerkey-item"><span class="num">2.</span>\( \dfrac{x-3}{x+4} \)</div>
+    <div class="answerkey-item"><span class="num">3.</span>\( x=3 \) or \( x=4 \)</div>
+    <div class="answerkey-item"><span class="num">4.</span>\( x=9 \)</div>
+    <div class="answerkey-item"><span class="num">5.</span>\( \dfrac{x}{x+3} \)</div>
+    <div class="answerkey-item"><span class="num">6.</span>\( \dfrac{x^2-2x+4}{x-2} \)</div>
+    <div class="answerkey-item"><span class="num">7.</span>\( \dfrac{x}{2-5x} \)</div>
+    <div class="answerkey-item"><span class="num">8.</span>\( \dfrac{x+2}{x-1} \)</div>
+    <div class="answerkey-item"><span class="num">9.</span>\( x=-5 \)</div>
+    <div class="answerkey-item"><span class="num">10.</span>\( \dfrac{2}{x+2} \)</div>
+  </div>
+
+  <div class="confidence">
+    <p style="font-weight:bold;">How confident are you with algebraic fractions right now?</p>
+    <div id="stars">☆☆☆☆☆</div>
+    <p id="star-label"></p>
+  </div>
+</section>
+
+</div>
+
+<footer class="bottom">
+  Math 172 — Foundational Fluency: Algebraic Fractions &nbsp;|&nbsp; Santa Ana College
+</footer>
+
+<script>
+function revealSteps(id) {
+  const steps = document.getElementById(id + '-steps');
+  if (steps) {
+    steps.style.display = 'block';
+    steps.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+  event.target.style.display = 'none';
+}
+
+function toggleCheck(id) {
+  const el = document.getElementById(id);
+  el.style.display = (el.style.display === 'block') ? 'none' : 'block';
+}
+
+const starLabels = ['', 'Not confident yet', 'Somewhat unsure', 'Mostly got it', 'Confident', 'Very confident — I could explain this!'];
+document.getElementById('stars').addEventListener('click', function(e) {
+  const rect = this.getBoundingClientRect();
+  const x = e.clientX - rect.left;
+  const starWidth = rect.width / 5;
+  const rating = Math.max(1, Math.min(5, Math.ceil(x / starWidth)));
+  this.textContent = '★'.repeat(rating) + '☆'.repeat(5 - rating);
+  document.getElementById('star-label').textContent = starLabels[rating] || '';
+});
+
+document.addEventListener("DOMContentLoaded", function() {
+  renderMathInElement(document.body, {
+    delimiters: [
+      {left: "\\[", right: "\\]", display: true},
+      {left: "\\(", right: "\\)", display: false}
+    ],
+    throwOnError: false
+  });
+});
+</script>
+
+</body>
+</html>
